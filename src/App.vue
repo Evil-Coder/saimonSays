@@ -114,7 +114,7 @@ export default {
 			let equalityLength = () => this.userNumbers.length === this.needNumbers.length
 
 			if (equalityNumber() && equalityLength()) ++this.result && await this.newRound()
-			else if (equalityNumber) this.numberAnswer++
+			else if (equalityNumber()) this.numberAnswer++
 			else if (this.result > 6) {
 				this.result = Math.round(this.result / 10) * 10
 				this.showRating = true
