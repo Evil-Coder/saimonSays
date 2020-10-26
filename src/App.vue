@@ -96,14 +96,14 @@ export default {
 			let hide = item => this.panels[item -1].classList.remove('simon__panel_active')
 			let play = item => this.melodies[item].play()
 
-			function reproduce (item, time) { setTimeout(play(item), time) }
+			let reproduce = (item, time) => supMethods.promiseTimeout(()=> play(item), time)
 			function flash (item, time) {
 				supMethods.promiseTimeout(()=> show(item), 100)
 				return supMethods.promiseTimeout(()=> hide(item), time)
 			}
 
 			for (const element of this.needNumbers)  {
-				await reproduce(element, this.gameMode === 0 ? 800 : 100)
+				await reproduce(element, this.gameMode === 200 ? 600 : 100)
 				await flash(element, this.gameMode - 100)
 			}
 		},
